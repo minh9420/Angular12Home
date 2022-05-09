@@ -1,0 +1,56 @@
+<!-- header -->
+<div class="header__room">
+  <div class="navroom">
+    <div class="tabs navroom__content">
+      <h1 style="margin: 0;">DANH MUC KHOA PHONG</h1>
+      <button mat-button  (click)="openDialog()">
+        <mat-icon style="margin:auto 12px; cursor: pointer" class="add">library_add</mat-icon>
+      </button>
+    </div>
+    <div class="navroom__btn">
+      <mat-icon style="color:rgb(19, 142, 194)" >search</mat-icon>
+      <input  class="navroom__look" type="text" name="" id="" placeholder="Nhập từ tìm kiếm">
+    </div>
+  </div>
+  <div>
+<!-- body -->
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+      
+    <ng-container class="abc" matColumnDef="maKhoa">
+      <th mat-header-cell *matHeaderCellDef class="tabs columcode"> Mã Khoa </th>
+      <td class="colu" mat-cell  *matCellDef="let element" > 
+        <span>
+          {{element.maKhoa}}
+        </span>
+       </td>
+    </ng-container>
+    
+    <ng-container matColumnDef="tenKhoa">
+      <th mat-header-cell *matHeaderCellDef class="tabs"> Tên Khoa </th>
+      <td class="colu" mat-cell *matCellDef="let element" > 
+        <span>
+          {{element.tenKhoa}}
+        </span>
+         </td>
+    </ng-container>
+    
+    <ng-container matColumnDef="symbol">
+      <th mat-header-cell *matHeaderCellDef class="tabs columcode"> </th>
+      <td class="colu" mat-cell *matCellDef="let element">
+        <button (click)="openAddEdit(element)" >
+          <!-- <button (click)="ccc(element.id)" > -->
+           <span>
+            <mat-icon style ="color:rgb(19, 142, 194); border: none; outline: none;">playlist_add</mat-icon> 
+           </span>  
+        </button>
+        </td>
+    </ng-container>
+    
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+  </table>
+</div>
+</div>
+
+<!-- <app-home></app-home> -->

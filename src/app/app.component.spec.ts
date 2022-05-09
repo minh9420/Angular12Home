@@ -20,16 +20,16 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'angular12'`, () => {
+  it(`should have as title 'HOMEWORK_NG12'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('angular12');
+    expect(app.title).toEqual('HOMEWORK_NG12');
   });
 
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain('angular12 app is running!');
+    expect(compiled.querySelector('.content span')?.textContent).toContain('HOMEWORK_NG12 app is running!');
   });
 });
