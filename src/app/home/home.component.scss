@@ -1,0 +1,39 @@
+
+table {
+    width: 100%;
+  }
+  .custom-dialog-container .mat-dialog-container {
+    /* add your styles */
+    width: 150px;
+    padding: 10px
+}
+
+  .header__room {
+    margin: 0 8px;
+  }
+  .colu {
+    width: 40px important
+  }
+ .tabs {
+   background-color: rgb(19, 142, 194);
+   color: white;
+ }
+.navroom__btn{
+  margin: 5px; 
+  border: 0.3px solid rgba(0, 0, 0, 0.6); 
+  border-radius: 8px; 
+
+}
+.add:hover {
+  font-size: 30px;
+}
+ .navroom__content {
+   border-radius: 10px;
+   display: flex;
+    justify-content: space-between;
+ }
+ .navroom__look {
+   height: 40px;
+  outline: none;
+  border: none;
+ }
