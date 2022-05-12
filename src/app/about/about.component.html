@@ -1,24 +1,58 @@
-<div mat-dialog-content>
+
+<form *ngIf="!datated" [formGroup]="profileForm" action="" (ngSubmit)="onSubmit()">
+  <div mat-dialog-content>
     <h1>Them moi khoa</h1>
     <div>
       <p style="margin: 0">Ten Khoa <span style="color: red;">(*)</span></p>
       <mat-form-field style="width: 100%" appearance="outline">
         <!-- <mat-label>Ma Khoa</mat-label> -->
-        <input style="width: 100%;" matInput [(ngModel)]="addcode">
+        <input formControlName="tenKhoa" style="width: 100%;" matInput required>
+        <label *ngIf="profileForm.get('tenKhoa')?.invalid && profileForm.get('tenKhoa')?.touched" [ngClass] = "'error'"> Age is required. </label>
       </mat-form-field>
     </div>
     <div>
       <p style="margin: 0">Ma Khoa<span style="color: red;">(*)</span></p>
       <mat-form-field style="width: 100%" appearance="outline">
         <!-- <mat-label>Ma Khoa</mat-label> -->
-        <input matInput [(ngModel)]="addname">
+        <input matInput formControlName="maKhoa" required>
+        <label *ngIf="profileForm.get('maKhoa')?.invalid && profileForm.get('maKhoa')?.touched" [ngClass] = "'error'"> Age is required. </label>
       </mat-form-field>
     </div>
   </div>
-  <div style="float: right;" mat-dialog-actions>
+  <div  style="float: right;" mat-dialog-actions>
     <button mat-button (click)="onNoClick()">Bo Qua</button>
-    <button style="margin-left: 20px;" mat-button [mat-dialog-close]="{tenKhoa: addcode, maKhoa: addname}" cdkFocusInitial>Dong Y</button>
-    <!-- <button mat-button >Dong Y</button> -->
+    <button *ngIf="!profileForm.valid" style="margin-left: 20px;" mat-button type="submit" cdkFocusInitial>Dong Y</button>
+    <!-- <button style="margin-left: 20px;" mat-button type="submit" [mat-dialog-close]="profileForm.value" cdkFocusInitial>Dong Y</button> -->
+    <button *ngIf="profileForm.valid" style="margin-left: 20px;" mat-button  type="submit" [mat-dialog-close]="profileForm.value" cdkFocusInitial>Dong Y</button>
   </div>
+</form>
 
-
+<form *ngIf="datated" [formGroup]="editForm" action="" (ngSubmit)="onSubmit()" action="">
+  <div mat-dialog-content>
+    <h1>sua moi khoa</h1>
+    <div>
+      <p style="margin: 0">Ten Khoa <span style="color: red;">(*)</span></p>
+      <mat-form-field style="width: 100%" appearance="outline">
+        <!-- <mat-label>Ma Khoa</mat-label> -->
+        <input formControlName="tenKhoa" style="width: 100%;" matInput required>
+        <label *ngIf="editForm.get('tenKhoa')?.invalid && editForm.get('tenKhoa')?.touched" [ngClass] = "'error'"> Age is required. </label>
+      </mat-form-field>
+    </div>
+    <div>
+      <p style="margin: 0">Ma Khoa<span style="color: red;">(*)</span></p>
+      <mat-form-field style="width: 100%" appearance="outline">
+        <!-- <mat-label>Ma Khoa</mat-label> -->
+        <input matInput formControlName="maKhoa" required>
+        <label *ngIf="editForm.get('maKhoa')?.invalid && editForm.get('maKhoa')?.touched" [ngClass] = "'error'"> Age is required. </label>
+      </mat-form-field>
+    </div>
+  </div>
+  <div  style="float: right;" mat-dialog-actions>
+    <button mat-button (click)="onNoClick()">Bo Qua</button>
+    <button *ngIf="!editForm.valid" style="margin-left: 20px;" mat-button type="submit" cdkFocusInitial>Dong Y</button>
+    <!-- <button style="margin-left: 20px;" mat-button type="submit" [mat-dialog-close]="profileForm.value" cdkFocusInitial>Dong Y</button> -->
+    <button *ngIf="editForm.valid" style="margin-left: 20px;" mat-button  type="submit" [mat-dialog-close]="editForm.value" cdkFocusInitial>Dong Y</button>
+  </div>
+</form>
+  
+  

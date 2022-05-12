@@ -37,8 +37,7 @@
     <ng-container matColumnDef="symbol">
       <th mat-header-cell *matHeaderCellDef class="tabs columcode"> </th>
       <td class="colu" mat-cell *matCellDef="let element">
-        <button (click)="openAddEdit(element)" >
-          <!-- <button (click)="ccc(element.id)" > -->
+        <button (click)="editNew(element)">
            <span>
             <mat-icon style ="color:rgb(19, 142, 194); border: none; outline: none;">playlist_add</mat-icon> 
            </span>  

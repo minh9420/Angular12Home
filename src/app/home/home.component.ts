@@ -1,4 +1,4 @@
-import { ExampleComponent } from './../example/example.component';
+// import { ExampleComponent } from './../example/example.component';
 import { AboutComponent } from './../about/about.component';
 import { HttpServerService } from './../Services/http-server.service';
 import { ViewEncapsulation } from '@angular/core';
@@ -74,25 +74,45 @@ export class HomeComponent implements OnInit {
     }))
   }
 
+  editsv(e: any):void {
+    this.httpServerService.editComment(e.id, this.post).subscribe((data => {
+      console.log('nnono')
+      this.post = data;
+      if(this.post) {
+        this.getsv()
+      }
+  }))
+  };
+
+  editNew(element: any):void {
+    const dialogRef = this.dialog.open(AboutComponent, {
+      width: '1050px',
+      data: element,
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      this.post = result;
+      console.log(this.post)
+      if (this.post) {
+        this.editsv(element)
+      }
+      console.log(this.post)
+    });
+  }
+
   // deletesv() :void  {
   //   this.httpServerService.deleteComment(this.dataSource).subscribe((data => {
   //   }))
   // }
 
-  openAddEdit(element:any):void {
-    console.log(element.id);
+  // openAddEdit(element:any):void {
+  //   console.log(element.id);
     
-    const dialogRef = this.dialog.open(ExampleComponent, {
-      panelClass: 'custom-dialog-container',
-      data: {pro: element, meth: this.getsv, open: this.openDialog, post: this.postsv}
-    });
-  }
-
-
-  // addDelete(event:any):void {
-  //   // const dataDel = event.target
-  //   console.log('event.target') 
-  // };
+  //   const dialogRef = this.dialog.open(ExampleComponent, {
+  //     panelClass: 'custom-dialog-container',
+  //     data: {pro: element, meth: this.getsv, open: this.openDialog, post: this.postsv}
+  //   });
+  // }
 
   
   openDialog():void {
@@ -104,7 +124,8 @@ export class HomeComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
       this.post = result;
-      if (this.post) {this.postsv()}
+      if (this.post) {
+        this.postsv()}
       console.log(this.post)
     });
   }

@@ -9,21 +9,22 @@ import {MatDialogModule} from '@angular/material/dialog';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { AboutComponent } from './about/about.component';
-import { ExampleComponent } from './example/example.component';
-import { AddexpComponent } from './addexp/addexp.component';
+// import { ExampleComponent } from './example/example.component';
+// import { AddexpComponent } from './addexp/addexp.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     AboutComponent,
-    ExampleComponent,
-    AddexpComponent,
+    // ExampleComponent,
+    // AddexpComponent,
   ],
   imports: [
     BrowserModule,
@@ -37,6 +38,7 @@ import { AddexpComponent } from './addexp/addexp.component';
     BrowserAnimationsModule,
     MatFormFieldModule,
     MatInputModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
