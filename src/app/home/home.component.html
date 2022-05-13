@@ -3,13 +3,18 @@
   <div class="navroom">
     <div class="tabs navroom__content">
       <h1 style="margin: 0;">DANH MUC KHOA PHONG</h1>
-      <button mat-button  (click)="openDialog()">
-        <mat-icon style="margin:auto 12px; cursor: pointer" class="add">library_add</mat-icon>
+      <button 
+      style="
+      margin:12px;
+      border-radius: 2px ;"
+      mat-button  
+      (click)="openDialog()">
+        <mat-icon style="margin:auto 12px; cursor: pointer" >library_add</mat-icon>
       </button>
     </div>
     <div class="navroom__btn">
       <mat-icon style="color:rgb(19, 142, 194)" >search</mat-icon>
-      <input  class="navroom__look" type="text" name="" id="" placeholder="Nhập từ tìm kiếm">
+      <input style="width: 90%" (keyup)="applyFilter($event)"  class="navroom__look" type="text" name="" id="" placeholder="Nhập từ tìm kiếm">
     </div>
   </div>
   <div>
@@ -37,11 +42,17 @@
     <ng-container matColumnDef="symbol">
       <th mat-header-cell *matHeaderCellDef class="tabs columcode"> </th>
       <td class="colu" mat-cell *matCellDef="let element">
-        <button (click)="editNew(element)">
+        <button style="float: right;" (click)="editNew(element)">
            <span>
             <mat-icon style ="color:rgb(19, 142, 194); border: none; outline: none;">playlist_add</mat-icon> 
            </span>  
         </button>
+
+        <button style="float: right; margin-right: 12px;" (click)="deletesv(element)">
+          <span>
+           <mat-icon style ="color:rgb(19, 142, 194); ">delete</mat-icon>
+          </span>  
+       </button>
         </td>
     </ng-container>
     
@@ -49,7 +60,12 @@
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 
   </table>
+  <mat-paginator [pageSizeOptions]="[5, 10, 20]"
+                 showFirstLastButtons 
+                 aria-label="Select page of periodic elements">
+  </mat-paginator>
 </div>
+
 </div>
 
 <!-- <app-home></app-home> -->

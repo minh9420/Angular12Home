@@ -17,42 +17,45 @@ export class AboutComponent implements OnInit {
   private dialogRef: MatDialogRef<HomeComponent>,
   private fb: FormBuilder) { }
 
-  public datated: any = this.data;
+public dp = 'none';
+  public nameMajor:string = 'Them moi';
+  // public datated: any = this.data;
   public profileForm = this.fb.group(
     {
     tenKhoa: ['', Validators.required],
     maKhoa: ['', Validators.required],
   }
   );
-  public editForm = this.fb.group(
-    {
-    tenKhoa: [this.datated.tenKhoa, Validators.required],
-    maKhoa: [this.datated.maKhoa, Validators.required],
-  }
-  );
+
 
   onSubmit() {
     console.warn(this.profileForm.value);
     // this.onNoClick()
   }
-
+  
   ngOnInit(): void {
-    
+    this.changeName()
   }
-
+  changeName() {
+    if(this.data) {
+      this.nameMajor = "sua danh sach khoa"
+       this.profileForm = this.fb.group(
+        {
+        tenKhoa: [this.data.tenKhoa, Validators.required],
+        maKhoa: [this.data.maKhoa, Validators.required],
+      }
+      );
+    }
+}
   onNoClick(): void {
     this.dialogRef.close();
   }
-  // abc() {
-  //   if (this.profileForm.invalid) {
-  //     console.warn(this.profileForm.value);
-  //     this.profileForm.get('tenKhoa')?.markAsTouched();
-  //     this.profileForm.get('maKhoa')?.markAsTouched();
-  //     return
-  //    } else  {
-  //      console.log(this.profileForm.value)
-  //      return this.profileForm.value
-  //    }
-  //    this.dialogRef.close();
-  //   }  
+
+  onSave(event:Event){
+    console.log(this.profileForm.value)
+    this.dp = 'block';
+    if(this.profileForm.valid) {
+      this.dialogRef.close(this.profileForm.value)
+    }
+  }
 }
